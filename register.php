@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     $stmt->bindParam("username", $username, PDO::PARAM_STR);
     $stmt->execute();
 
-    if ($stmt->rowCount() > 0) $errors["user"] = "User already exist.";
+    if ($stmt->rowCount() > 0) $errors["authentication"] = "User already exist.";
 
     if (count($errors) === 0)
     {
@@ -129,9 +129,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                 <?php endif; ?>
             </div>
 
-                <?php if (!empty($errors["user"]) && empty($errors["confirm_password"])) : ?>
+                <?php if (!empty($errors["authentication"]) && empty($errors["confirm_password"])) : ?>
                     <div class="bg-red-200 py-1 text-sm my-1 text-center rounded text-neutral-600" role="alert" style="border: 1px solid #fb7185;">
-                        <?= $errors["user"] ?>
+                        <?= $errors["authentication"] ?>
                     </div>
                 <?php endif; ?>
 
